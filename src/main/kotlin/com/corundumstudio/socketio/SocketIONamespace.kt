@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2012-2019 Nikita Koksharov
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the "License")
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
@@ -13,31 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.corundumstudio.socketio;
+package com.corundumstudio.socketio
 
-import com.corundumstudio.socketio.listener.ClientListeners;
+import com.corundumstudio.socketio.listener.ClientListeners
 
-import java.util.Collection;
-import java.util.UUID;
+import java.util.UUID
 
 /**
  * Fully thread-safe.
  *
  */
-public interface SocketIONamespace extends ClientListeners {
+interface SocketIONamespace : ClientListeners {
 
-    String getName();
+    fun getName() : String
 
-    BroadcastOperations getBroadcastOperations();
+    fun getBroadcastOperations() : BroadcastOperations
 
-    BroadcastOperations getRoomOperations(String room);
+    fun getRoomOperations(room: String) : BroadcastOperations
 
     /**
      * Get all clients connected to namespace
      *
      * @return collection of clients
      */
-    Collection<SocketIOClient> getAllClients();
+    fun getAllClients() : Collection<SocketIOClient>
 
     /**
      * Get client by uuid connected to namespace
@@ -45,6 +44,6 @@ public interface SocketIONamespace extends ClientListeners {
      * @param uuid - id of client
      * @return client
      */
-    SocketIOClient getClient(UUID uuid);
+    fun getClient(uuid: UUID) : SocketIOClient
 
 }

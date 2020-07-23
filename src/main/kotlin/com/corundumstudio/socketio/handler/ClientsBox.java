@@ -15,7 +15,6 @@
  */
 package com.corundumstudio.socketio.handler;
 
-import com.corundumstudio.socketio.HandshakeData;
 import io.netty.channel.Channel;
 import io.netty.util.internal.PlatformDependent;
 

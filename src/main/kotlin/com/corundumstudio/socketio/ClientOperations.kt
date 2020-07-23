@@ -13,16 +13,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.corundumstudio.socketio;
+package com.corundumstudio.socketio
 
-public interface AuthorizationListener {
+import com.corundumstudio.socketio.protocol.Packet
+
+/**
+ * Available client operations
+ */
+interface ClientOperations {
 
     /**
-     * Checks is client with handshake data is authorized
+     * Send custom packet.
+     * But {@link ClientOperations#sendEvent} method
+     * usage is enough for most cases.
      *
-     * @param data - handshake data
-     * @return - <b>true</b> if client is authorized of <b>false</b> otherwise
+     * @param packet - packet to send
      */
-    boolean isAuthorized(HandshakeData data);
+    fun send(packet: Packet)
+
+    /**
+     * Disconnect client
+     *
+     */
+    fun disconnect()
+
+    /**
+     * Send event
+     *
+     * @param name - event name
+     * @param data - event data
+     */
+    fun sendEvent(name: String, vararg data: Any?)
 
 }

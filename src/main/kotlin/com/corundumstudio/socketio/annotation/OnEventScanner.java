@@ -15,9 +15,6 @@
  */
 package com.corundumstudio.socketio.annotation;
 
-import com.corundumstudio.socketio.AckRequest;
-import com.corundumstudio.socketio.MultiTypeArgs;
-import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.handler.SocketIOException;
 import com.corundumstudio.socketio.listener.DataListener;
 import com.corundumstudio.socketio.listener.MultiTypeEventListener;

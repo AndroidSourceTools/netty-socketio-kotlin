@@ -15,7 +15,6 @@
  */
 package com.corundumstudio.socketio.parser;
 
-import com.corundumstudio.socketio.AckCallback;
 import com.corundumstudio.socketio.protocol.Packet;
 import com.corundumstudio.socketio.protocol.PacketType;
 import com.fasterxml.jackson.core.JsonParseException;

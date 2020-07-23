@@ -16,8 +16,6 @@
 package com.corundumstudio.socketio.transport;
 
 import com.corundumstudio.socketio.Configuration;
-import com.corundumstudio.socketio.SocketIOChannelInitializer;
-import com.corundumstudio.socketio.Transport;
 import com.corundumstudio.socketio.handler.AuthorizeHandler;
 import com.corundumstudio.socketio.handler.ClientHead;
 import com.corundumstudio.socketio.handler.ClientsBox;
@@ -56,8 +54,8 @@ public class WebSocketTransport extends ChannelInboundHandlerAdapter {
     private final boolean isSsl;
 
     public WebSocketTransport(boolean isSsl,
-            AuthorizeHandler authorizeHandler, Configuration configuration,
-            CancelableScheduler scheduler, ClientsBox clientsBox) {
+                              AuthorizeHandler authorizeHandler, Configuration configuration,
+                              CancelableScheduler scheduler, ClientsBox clientsBox) {
         this.isSsl = isSsl;
         this.authorizeHandler = authorizeHandler;
         this.configuration = configuration;

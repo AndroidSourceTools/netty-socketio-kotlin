@@ -13,23 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.corundumstudio.socketio;
+package com.corundumstudio.socketio
 
-/**
- * Multi type ack callback used in case of multiple ack arguments
- *
- */
-public abstract class MultiTypeAckCallback extends AckCallback<MultiTypeArgs> {
+interface AuthorizationListener {
 
-    private Class<?>[] resultClasses;
-
-    public MultiTypeAckCallback(Class<?> ... resultClasses) {
-        super(MultiTypeArgs.class);
-        this.resultClasses = resultClasses;
-    }
-
-    public Class<?>[] getResultClasses() {
-        return resultClasses;
-    }
+    /**
+     * Checks is client with handshake data is authorized
+     *
+     * @param data - handshake data
+     * @return - <b>true</b> if client is authorized of <b>false</b> otherwise
+     */
+    fun isAuthorized(data: HandshakeData) : Boolean
 
 }

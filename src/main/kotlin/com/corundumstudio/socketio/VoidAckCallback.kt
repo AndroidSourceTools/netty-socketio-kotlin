@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *    http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,27 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.corundumstudio.socketio;
+package com.corundumstudio.socketio
 
 /**
- * Base ack callback with {@link Void} class as type.
+ * Base ack callback with [Void] class as type.
  *
  */
-public abstract class VoidAckCallback extends AckCallback<Void> {
+abstract class VoidAckCallback : AckCallback<Unit> {
 
-    public VoidAckCallback() {
-        super(Void.class);
+    constructor() : super(Unit::class.java)
+
+    constructor(timeout: Int) : super(Unit::class.java, timeout)
+
+    override fun onSuccess(result: Unit) {
+        onSuccess()
     }
 
-    public VoidAckCallback(int timeout) {
-        super(Void.class, timeout);
-    }
-
-    @Override
-    public final void onSuccess(Void result) {
-        onSuccess();
-    }
-
-    protected abstract void onSuccess();
-
+    protected abstract fun onSuccess()
 }

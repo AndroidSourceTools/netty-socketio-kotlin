@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.corundumstudio.socketio;
+package com.corundumstudio.socketio
 
-public enum AckMode {
+enum class AckMode {
 
     /**
      * Send ack-response automatically on each ack-request

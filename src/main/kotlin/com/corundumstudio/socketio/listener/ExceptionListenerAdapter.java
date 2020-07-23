@@ -15,7 +15,6 @@
  */
 package com.corundumstudio.socketio.listener;
 
-import com.corundumstudio.socketio.SocketIOClient;
 import io.netty.channel.ChannelHandlerContext;
 
 import java.util.List;

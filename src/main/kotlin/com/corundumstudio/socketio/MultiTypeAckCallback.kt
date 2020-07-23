@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2012-2019 Nikita Koksharov
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the "License")
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.corundumstudio.socketio;
+package com.corundumstudio.socketio
 
-import com.corundumstudio.socketio.handler.ClientHead;
+/**
+ * Multi type ack callback used in case of multiple ack arguments
+ */
+abstract class MultiTypeAckCallback(private vararg val resultClasses: Class<*>) : AckCallback<MultiTypeArgs>(MultiTypeArgs::class.java) {
 
-
-public interface Disconnectable {
-
-    void onDisconnect(ClientHead client);
+    fun getResultClasses() = resultClasses
 
 }

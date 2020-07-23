@@ -16,7 +16,7 @@
 package com.corundumstudio.socketio.protocol;
 
 import com.corundumstudio.socketio.AckCallback;
-import com.corundumstudio.socketio.ack.AckManager;
+import com.corundumstudio.socketio.ack.AckManager2;
 import com.corundumstudio.socketio.handler.ClientHead;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufInputStream;
@@ -35,9 +35,9 @@ public class PacketDecoder {
     private final ByteBuf QUOTES = Unpooled.copiedBuffer("\"", CharsetUtil.UTF_8);
 
     private final JsonSupport jsonSupport;
-    private final AckManager ackManager;
+    private final AckManager2 ackManager;
 
-    public PacketDecoder(JsonSupport jsonSupport, AckManager ackManager) {
+    public PacketDecoder(JsonSupport jsonSupport, AckManager2 ackManager) {
         this.jsonSupport = jsonSupport;
         this.ackManager = ackManager;
     }

@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.corundumstudio.socketio;
+package com.corundumstudio.socketio
 
+import kotlin.reflect.KClass
 
 /**
  * Base ack callback class.
@@ -34,58 +35,35 @@ package com.corundumstudio.socketio;
  * @see VoidAckCallback
  * @see MultiTypeAckCallback
  *
+ * Creates AckCallback with timeout
+ * @param resultClass - result class
+ * @param timeout - callback timeout in seconds
  */
-public abstract class AckCallback<T> {
-
-    protected final Class<T> resultClass;
-    protected final int timeout;
+abstract class AckCallback<T>(
+    /**
+     * Returns class of argument in {@link #onSuccess} method
+     * @return - result class
+     */
+    val resultClass: Class<T>,
+    val timeout: Int
+) {
 
     /**
      * Create AckCallback
-     *
      * @param resultClass - result class
      */
-    public AckCallback(Class<T> resultClass) {
-        this(resultClass, -1);
-    }
-
-    /**
-     * Creates AckCallback with timeout
-     *
-     * @param resultClass - result class
-     * @param timeout - callback timeout in seconds
-     */
-    public AckCallback(Class<T> resultClass, int timeout) {
-        this.resultClass = resultClass;
-        this.timeout = timeout;
-    }
-
-    public int getTimeout() {
-        return timeout;
-    }
+    constructor(resultClass: Class<T>) : this(resultClass, -1)
 
     /**
      * Executes only once when acknowledgement received from client.
-     *
      * @param result - object sended by client
      */
-    public abstract void onSuccess(T result);
+    abstract fun onSuccess(result: T)
 
     /**
      * Invoked only once then <code>timeout</code> defined
-     *
      */
-    public void onTimeout() {
-
-    }
-
-    /**
-     * Returns class of argument in {@link #onSuccess} method
-     *
-     * @return - result class
-     */
-    public Class<T> getResultClass() {
-        return resultClass;
+    open fun onTimeout() {
     }
 
 }

@@ -15,7 +15,6 @@
  */
 package com.corundumstudio.socketio.messages;
 
-import com.corundumstudio.socketio.Transport;
 import com.corundumstudio.socketio.handler.ClientHead;
 import io.netty.buffer.ByteBuf;
 

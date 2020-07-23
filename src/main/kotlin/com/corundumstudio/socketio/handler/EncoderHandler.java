@@ -16,7 +16,6 @@
 package com.corundumstudio.socketio.handler;
 
 import com.corundumstudio.socketio.Configuration;
-import com.corundumstudio.socketio.Transport;
 import com.corundumstudio.socketio.messages.HttpMessage;
 import com.corundumstudio.socketio.messages.*;
 import com.corundumstudio.socketio.protocol.Packet;

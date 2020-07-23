@@ -13,37 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.corundumstudio.socketio;
+package com.corundumstudio.socketio
 
-import com.corundumstudio.socketio.protocol.Packet;
+import com.corundumstudio.socketio.handler.ClientHead
 
-/**
- * Available client operations
- *
- */
-public interface ClientOperations {
+interface Disconnectable {
 
-    /**
-     * Send custom packet.
-     * But {@link ClientOperations#sendEvent} method
-     * usage is enough for most cases.
-     *
-     * @param packet - packet to send
-     */
-    void send(Packet packet);
-
-    /**
-     * Disconnect client
-     *
-     */
-    void disconnect();
-
-    /**
-     * Send event
-     *
-     * @param name - event name
-     * @param data - event data
-     */
-    void sendEvent(String name, Object ... data);
+    fun onDisconnect(client: ClientHead)
 
 }

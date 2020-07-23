@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2012-2019 Nikita Koksharov
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the "License")
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
@@ -13,35 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.corundumstudio.socketio;
+package com.corundumstudio.socketio
 
-import com.corundumstudio.socketio.protocol.Packet;
-import com.corundumstudio.socketio.store.Store;
+import com.corundumstudio.socketio.protocol.Packet
+import com.corundumstudio.socketio.store.Store
 
-import java.net.SocketAddress;
-import java.util.Set;
-import java.util.UUID;
-
+import java.net.SocketAddress
+import java.util.UUID
 
 /**
  * Fully thread-safe.
- *
  */
-public interface SocketIOClient extends ClientOperations, Store {
+interface SocketIOClient : ClientOperations, Store {
 
     /**
      * Handshake data used during client connection
      *
      * @return HandshakeData
      */
-    HandshakeData getHandshakeData();
+    fun getHandshakeData() : HandshakeData
 
     /**
      * Current client transport protocol
      *
      * @return transport protocol
      */
-    Transport getTransport();
+    fun getTransport() : Transport
 
     /**
      * Send event with ack callback
@@ -50,7 +47,7 @@ public interface SocketIOClient extends ClientOperations, Store {
      * @param data - event data
      * @param ackCallback - ack callback
      */
-    void sendEvent(String name, AckCallback<?> ackCallback, Object ... data);
+    fun sendEvent(name: String, ackCallback: AckCallback<*>, vararg data: Any?)
 
     /**
      * Send packet with ack callback
@@ -58,55 +55,55 @@ public interface SocketIOClient extends ClientOperations, Store {
      * @param packet - packet to send
      * @param ackCallback - ack callback
      */
-    void send(Packet packet, AckCallback<?> ackCallback);
+    fun send(packet: Packet, ackCallback: AckCallback<*>)
 
     /**
      * Client namespace
      *
      * @return - namespace
      */
-    SocketIONamespace getNamespace();
+    fun getNamespace() : SocketIONamespace
 
     /**
      * Client session id, uses {@link UUID} object
      *
      * @return - session id
      */
-    UUID getSessionId();
+    fun getSessionId() : UUID
 
     /**
      * Get client remote address
      *
      * @return remote address
      */
-    SocketAddress getRemoteAddress();
+    fun getRemoteAddress() : SocketAddress
 
     /**
      * Check is underlying channel open
      *
      * @return <code>true</code> if channel open, otherwise <code>false</code>
      */
-    boolean isChannelOpen();
+    fun isChannelOpen() : Boolean
 
     /**
      * Join client to room
      *
      * @param room - name of room
      */
-    void joinRoom(String room);
+    fun joinRoom(room: String)
 
     /**
      * Join client to room
      *
      * @param room - name of room
      */
-    void leaveRoom(String room);
+    fun leaveRoom(room: String)
 
     /**
      * Get all rooms a client is joined in.
      *
      * @return name of rooms
      */
-    Set<String> getAllRooms();
+    fun getAllRooms() : Set<String>
 
 }

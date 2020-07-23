@@ -15,7 +15,6 @@
  */
 package com.corundumstudio.socketio.parser;
 
-import com.corundumstudio.socketio.ack.AckManager;
 import com.corundumstudio.socketio.protocol.JacksonJsonSupport;
 import com.corundumstudio.socketio.protocol.PacketDecoder;
 import mockit.Mocked;

@@ -17,7 +17,7 @@ package com.corundumstudio.socketio.handler;
 
 import com.corundumstudio.socketio.AckRequest;
 import com.corundumstudio.socketio.Transport;
-import com.corundumstudio.socketio.ack.AckManager;
+import com.corundumstudio.socketio.ack.AckManager2;
 import com.corundumstudio.socketio.namespace.Namespace;
 import com.corundumstudio.socketio.namespace.NamespacesHub;
 import com.corundumstudio.socketio.protocol.Packet;
@@ -33,10 +33,10 @@ import java.util.List;
 public class PacketListener {
 
     private final NamespacesHub namespacesHub;
-    private final AckManager ackManager;
+    private final AckManager2 ackManager;
     private final CancelableScheduler scheduler;
 
-    public PacketListener(AckManager ackManager, NamespacesHub namespacesHub, PollingTransport xhrPollingTransport,
+    public PacketListener(AckManager2 ackManager, NamespacesHub namespacesHub, PollingTransport xhrPollingTransport,
                           CancelableScheduler scheduler) {
         this.ackManager = ackManager;
         this.namespacesHub = namespacesHub;

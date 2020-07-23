@@ -64,7 +64,7 @@ public class AckManager implements Disconnectable {
 
     }
 
-    private static final Logger log = LoggerFactory.getLogger(AckManager.class);
+    private static final Logger log = LoggerFactory.getLogger(AckManager2.class);
 
     private final ConcurrentMap<UUID, AckEntry> ackEntries = PlatformDependent.newConcurrentHashMap();
 

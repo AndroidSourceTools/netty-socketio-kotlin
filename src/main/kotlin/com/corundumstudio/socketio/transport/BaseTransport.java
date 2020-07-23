@@ -15,7 +15,6 @@
  */
 package com.corundumstudio.socketio.transport;
 
-import com.corundumstudio.socketio.Disconnectable;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
 @Deprecated

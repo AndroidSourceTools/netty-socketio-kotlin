@@ -13,15 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.corundumstudio.socketio;
+package com.corundumstudio.socketio
 
-import com.corundumstudio.socketio.listener.DataListener;
-import com.corundumstudio.socketio.protocol.Packet;
-import com.corundumstudio.socketio.protocol.PacketType;
+import com.corundumstudio.socketio.protocol.Packet
+import com.corundumstudio.socketio.protocol.PacketType
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicBoolean
 
 /**
  * Ack request received from Socket.IO client.
@@ -37,25 +34,19 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * executed or {@link DataListener#onData} invocation finished.
  *
  */
-public class AckRequest {
+class AckRequest(
+    private val originalPacket: Packet,
+    private val client: SocketIOClient
+) {
 
-    private final Packet originalPacket;
-    private final SocketIOClient client;
-    private final AtomicBoolean sended = new AtomicBoolean();
-
-    public AckRequest(Packet originalPacket, SocketIOClient client) {
-        this.originalPacket = originalPacket;
-        this.client = client;
-    }
+    private val sended = AtomicBoolean()
 
     /**
      * Check whether ack request was made
      *
      * @return true if ack requested by client
      */
-    public boolean isAckRequested() {
-        return originalPacket.isAckRequested();
-    }
+    fun isAckRequested() = originalPacket.isAckRequested()
 
     /**
      * Send ack data to client.
@@ -64,9 +55,8 @@ public class AckRequest {
      *
      * @param objs - ack data objects
      */
-    public void sendAckData(Object ... objs) {
-        List<Object> args = Arrays.asList(objs);
-        sendAckData(args);
+    fun sendAckData(vararg objs: Any?) {
+        sendAckData(objs.toList())
     }
 
     /**
@@ -76,15 +66,15 @@ public class AckRequest {
      *
      * @param objs - ack data object list
      */
-    public void sendAckData(List<Object> objs) {
-        if (!isAckRequested() || !sended.compareAndSet(false, true)) {
-            return;
+    fun sendAckData(objs: List<Any>) {
+        if (!isAckRequested() || !sended.compareAndSet(false, true))
+            return
+        val ackPacket = Packet(PacketType.MESSAGE).apply {
+            setSubType(PacketType.ACK)
+            setAckId(originalPacket.getAckId())
+            setData(objs)
         }
-        Packet ackPacket = new Packet(PacketType.MESSAGE);
-        ackPacket.setSubType(PacketType.ACK);
-        ackPacket.setAckId(originalPacket.getAckId());
-        ackPacket.setData(objs);
-        client.send(ackPacket);
+        client.send(ackPacket)
     }
 
 }

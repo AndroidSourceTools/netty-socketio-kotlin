@@ -19,7 +19,7 @@ import com.corundumstudio.socketio.Configuration;
 import com.corundumstudio.socketio.DisconnectableHub;
 import com.corundumstudio.socketio.HandshakeData;
 import com.corundumstudio.socketio.Transport;
-import com.corundumstudio.socketio.ack.AckManager;
+import com.corundumstudio.socketio.ack.AckManager2;
 import com.corundumstudio.socketio.messages.OutPacketMessage;
 import com.corundumstudio.socketio.namespace.Namespace;
 import com.corundumstudio.socketio.protocol.Packet;
@@ -59,7 +59,7 @@ public class ClientHead {
 
     private final Store store;
     private final DisconnectableHub disconnectableHub;
-    private final AckManager ackManager;
+    private final AckManager2 ackManager;
     private ClientsBox clientsBox;
     private final CancelableScheduler disconnectScheduler;
     private final Configuration configuration;
@@ -69,7 +69,7 @@ public class ClientHead {
     // TODO use lazy set
     private volatile Transport currentTransport;
 
-    public ClientHead(UUID sessionId, AckManager ackManager, DisconnectableHub disconnectable,
+    public ClientHead(UUID sessionId, AckManager2 ackManager, DisconnectableHub disconnectable,
                       StoreFactory storeFactory, HandshakeData handshakeData, ClientsBox clientsBox, Transport transport, CancelableScheduler disconnectScheduler,
                       Configuration configuration) {
         this.sessionId = sessionId;
@@ -193,7 +193,7 @@ public class ClientHead {
         return handshakeData;
     }
 
-    public AckManager getAckManager() {
+    public AckManager2 getAckManager() {
         return ackManager;
     }
 
