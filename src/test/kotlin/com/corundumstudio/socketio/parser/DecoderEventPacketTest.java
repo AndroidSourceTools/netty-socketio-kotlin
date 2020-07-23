@@ -16,7 +16,6 @@
 package com.corundumstudio.socketio.parser;
 
 import com.corundumstudio.socketio.protocol.JacksonJsonSupport;
-import com.corundumstudio.socketio.protocol.Packet;
 import com.corundumstudio.socketio.protocol.PacketDecoder;
 import com.corundumstudio.socketio.protocol.PacketType;
 import io.netty.buffer.Unpooled;

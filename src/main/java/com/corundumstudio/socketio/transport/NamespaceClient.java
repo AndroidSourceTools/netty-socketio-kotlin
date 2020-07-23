@@ -18,6 +18,7 @@ package com.corundumstudio.socketio.transport;
 import com.corundumstudio.socketio.AckCallback;
 import com.corundumstudio.socketio.HandshakeData;
 import com.corundumstudio.socketio.SocketIOClient;
+import com.corundumstudio.socketio.Transport;
 import com.corundumstudio.socketio.handler.ClientHead;
 import com.corundumstudio.socketio.namespace.Namespace;
 import com.corundumstudio.socketio.protocol.Packet;

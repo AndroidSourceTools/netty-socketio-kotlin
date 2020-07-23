@@ -23,7 +23,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class TransportState {
 
-    private Queue<Packet> packetsQueue = new ConcurrentLinkedQueue<Packet>();
+    private Queue<Packet> packetsQueue = new ConcurrentLinkedQueue();
     private Channel channel;
 
     public void setPacketsQueue(Queue<Packet> packetsQueue) {

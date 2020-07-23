@@ -15,26 +15,27 @@
  */
 package com.corundumstudio.socketio.annotation;
 
+import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.handler.SocketIOException;
-import com.corundumstudio.socketio.listener.ConnectListener;
+import com.corundumstudio.socketio.listener.DisconnectListener;
 import com.corundumstudio.socketio.namespace.Namespace;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class OnConnectScanner implements AnnotationScanner {
+public class OnDisconnectScanner implements AnnotationScanner {
 
     @Override
     public Class<? extends Annotation> getScanAnnotation() {
-        return OnConnect.class;
+        return OnDisconnect.class;
     }
 
     @Override
     public void addListener(Namespace namespace, final Object object, final Method method, Annotation annotation) {
-        namespace.addConnectListener(new ConnectListener() {
+        namespace.addDisconnectListener(new DisconnectListener() {
             @Override
-            public void onConnect(SocketIOClient client) {
+            public void onDisconnect(SocketIOClient client) {
                 try {
                     method.invoke(object, client);
                 } catch (InvocationTargetException e) {
@@ -49,7 +50,7 @@ public class OnConnectScanner implements AnnotationScanner {
     @Override
     public void validate(Method method, Class<?> clazz) {
         if (method.getParameterTypes().length != 1) {
-            throw new IllegalArgumentException("Wrong OnConnect listener signature: " + clazz + "." + method.getName());
+            throw new IllegalArgumentException("Wrong OnDisconnect listener signature: " + clazz + "." + method.getName());
         }
         boolean valid = false;
         for (Class<?> eventType : method.getParameterTypes()) {
@@ -58,7 +59,7 @@ public class OnConnectScanner implements AnnotationScanner {
             }
         }
         if (!valid) {
-            throw new IllegalArgumentException("Wrong OnConnect listener signature: " + clazz + "." + method.getName());
+            throw new IllegalArgumentException("Wrong OnDisconnect listener signature: " + clazz + "." + method.getName());
         }
     }
 

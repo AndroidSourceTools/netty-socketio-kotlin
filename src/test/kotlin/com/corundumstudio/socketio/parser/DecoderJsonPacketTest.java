@@ -15,7 +15,6 @@
  */
 package com.corundumstudio.socketio.parser;
 
-import com.corundumstudio.socketio.protocol.Packet;
 import io.netty.buffer.Unpooled;
 import io.netty.util.CharsetUtil;
 import org.junit.Assert;

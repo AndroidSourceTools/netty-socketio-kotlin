@@ -13,12 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.corundumstudio.socketio.listener;
+package com.corundumstudio.socketio.handler;
 
-/**
- * Multi type args event listener
- *
- */
-public interface MultiTypeEventListener extends DataListener<MultiTypeArgs> {
+import com.corundumstudio.socketio.AuthorizationListener;
+import com.corundumstudio.socketio.HandshakeData;
+
+public class SuccessAuthorizationListener implements AuthorizationListener {
+
+    @Override
+    public boolean isAuthorized(HandshakeData data) {
+        return true;
+    }
 
 }
